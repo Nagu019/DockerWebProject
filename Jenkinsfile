@@ -1,11 +1,20 @@
-node {
-    stage('clone') {
-        git 'https://github.com/Nagu019/DockerWebProject.git'
-    stage('buildimage') {
-        sh '''docker build -t nagu .'''
+pipeline {
+    agent any
+    stages {
+        stage('clone') {
+            steps{
+                git ' https://github.com/Nagu019/DockerWebProject.git'
+            }
+        }
+        stage('buildimage') {
+            steps {
+                sh '''docker build -t nagu .'''
+            }
+        }
+        stage('run container') {
+            steps {
+                sh ''' docker run --name nagu123 -d -p 84:80 nagu '''
+            }
+        }
     }
-    stage('run container') {
-        sh '''docker run --name nagu12 -d -p 83:80 nagu'''
-    }
-    }
-}
+}       
