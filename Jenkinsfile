@@ -13,7 +13,7 @@ pipeline {
         }
         stage ('containeer') {
             steps {
-                sh 'docker run --name sai -d -p 89:80 fill'
+                sh 'docker run --name pavan -d -p 8:880 fill'
             }
         }
     }
